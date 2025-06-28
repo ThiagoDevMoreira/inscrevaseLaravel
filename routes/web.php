@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SubscribeController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,3 +19,9 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::middleware(['auth'])->group(function () {
+    Route::post('/courses/{course}/subscribe', [SubscribeController::class, 'subscribe'])->name('courses.subscribe');
+    Route::get('/courses/{course}/students', [SubscribeController::class, 'students'])->name('courses.students');
+    Route::patch('/courses/{course}/progress', [SubscribeController::class, 'updateProgress'])->name('courses.progress.update');
+});
