@@ -24,12 +24,12 @@ class SubscribeController extends Controller
     // lista alunos do curso
     public function listStudentsByCourse(Course $course){
         $students = $couse->users()->get();
-        return view('course.students', compact('course', 'students'));
+        return view('courses.students', compact('course', 'students'));
     }
 
     // atualiza progresso de aluno no curso.
     //--- /!\ quando houver domínio "curso" migrar este método pra lá;
-    public function progressUpdate(request $request, course $course){
+    public function updateProgress(request $request, course $course){
         // valida entrada da requisição
         $request->validate(['progress' => 'required|integer|min:0|max:100']);
         $user = Auth::user();
