@@ -43,7 +43,7 @@ class CoursesController extends Controller
         return redirect()->route('courses.index')->with('sucess', 'Curso atualizado com sucesso.');
     }
 
-    public function destroy(string $id)
+    public function destroy(Course $course)
     {
         $course->delete();
         return redirect()->route('courses.index')->with('sucess', 'Curso excluído com sucesso.');

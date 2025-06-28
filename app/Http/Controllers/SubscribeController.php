@@ -12,18 +12,18 @@ class SubscribeController extends Controller
     public function subscribe(Course $course){
         $user = Auth::user();
         // valida duplicidade de inscrição
-        if ($user->couses()->where('course_id', $course->id)->exists()) {
+        if ($user->courses()->where('course_id', $course->id)->exists()) {
             return back->with('info', 'Você já está inscrito nesse curso.');
         }
         //inscreve no curso
-        $user->courses()->attach($course->id, ['subscribed_at'=>now(), 'progess'=>0]);
+        $user->courses()->attach($course->id, ['subscribed_at'=>now(), 'progress'=>0]);
         //retorno de sucesso
         return back()->with('sucess','Inscrição realizada com sucesso.');
     }
 
     // lista alunos do curso
     public function listStudentsByCourse(Course $course){
-        $students = $couse->users()->get();
+        $students = $course->users()->get();
         return view('courses.students', compact('course', 'students'));
     }
 
@@ -38,7 +38,7 @@ class SubscribeController extends Controller
             return back()->with('error','Você não está inscrito nesse curso.');
         }
         // atualiza progresso
-        $user->courses()->updateExistingPivot($couse->id, ['progress'=>$request->input('preogress')]);
+        $user->courses()->updateExistingPivot($course->id, ['progress'=>$request->input('preogress')]);
         //retorno de sucesso
         return back()->with('sucess', 'Seu progresso foi atualizado');
     }
