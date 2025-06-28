@@ -6,6 +6,8 @@ Este projeto simula uma plataforma de cursos online, onde usuários podem se cad
 
 ---
 
+> [**v0.7**: etapa de debug de funcionalidades relacionadas à lista de cursos e refinamento de UI.]
+
 ## ✨ Destaques
 
 - Interface clara, responsiva e com design leve (TailwindCSS).
