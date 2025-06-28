@@ -45,4 +45,12 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function Courses(): BelongsToMany
+    {
+        return $this->belongsToMany(Couse::class)
+        ->withPivot('subscribed_at', 'progress')
+        ->withTimestamps();
+
+    }
 }
