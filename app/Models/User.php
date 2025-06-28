@@ -46,7 +46,7 @@ class User extends Authenticatable
         ];
     }
 
-    public function Courses(): BelongsToMany
+    public function courses(): BelongsToMany
     {
         return $this->belongsToMany(Couse::class)
         ->withPivot('subscribed_at', 'progress')
